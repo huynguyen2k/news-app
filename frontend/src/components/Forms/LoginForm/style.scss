@@ -1,0 +1,115 @@
+.login-form {
+	display: flex;
+	width: 1000px;
+	border-radius: 6px;
+
+	overflow: hidden;
+
+	&__image {
+		width: 50%;
+	}
+
+	&__info {
+		width: 50%;
+		padding: 64px 48px;
+		background-color: white;
+	}
+
+	&__title {
+		margin-bottom: 32px;
+		font-size: 1.8rem;
+		font-weight: 500;
+		text-align: center;
+	}
+
+	&__row {
+		margin-bottom: 28px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.form-group {
+		position: relative;
+
+		.label {
+			display: block;
+			font-size: 1.2rem;
+		}
+		.input {
+			width: 100%;
+			margin-top: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 12px;
+
+			font-size: 1rem;
+
+			&:focus {
+				outline: none;
+				border-color: var(--success);
+				box-shadow: 0 0 0 1px var(--success);
+			}
+		}
+		.sign-in-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			width: 100%;
+			border: none;
+			outline: none;
+			border-radius: 4px;
+			padding: 12px;
+
+			color: white;
+			background-color: var(--success);
+
+			font-size: 1.1rem;
+			line-height: 24px;
+
+			cursor: pointer;
+			user-select: none;
+			transition: background-color 0.25s ease;
+
+			span {
+				margin-left: 12px;
+			}
+			&:disabled {
+				cursor: default;
+				pointer-events: none;
+				opacity: 0.8;
+			}
+			&:hover {
+				background-color: var(--dark-success);
+			}
+		}
+		.error-message {
+			position: absolute;
+			top: calc(100% + 4px);
+			left: 4px;
+			color: red;
+		}
+		.checkbox {
+			display: flex;
+			align-items: center;
+
+			cursor: pointer;
+			user-select: none;
+
+			&-input {
+				width: 16px;
+				height: 16px;
+				outline: none;
+
+				cursor: pointer;
+				user-select: none;
+			}
+			&-label {
+				margin-left: 8px;
+				font-size: 1.1rem;
+			}
+		}
+	}
+}

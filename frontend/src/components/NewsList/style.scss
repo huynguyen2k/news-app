@@ -1,0 +1,50 @@
+.news-list {
+	padding: 32px 0;
+	color: #444;
+
+	&__title {
+		margin-bottom: 24px;
+		font-size: 1.8rem;
+		font-weight: 500;
+		line-height: 1.2;
+	}
+
+	&__item {
+		display: flex;
+		margin-bottom: 16px;
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 16px;
+		width: 800px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		.image {
+			width: 200px;
+			height: 150px;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+		.info {
+			flex: 1 0 0;
+			margin-left: 16px;
+
+			.title {
+				color: inherit;
+				font-size: 1.5rem;
+				font-weight: 500;
+				line-height: 1.2;
+
+				&:hover {
+					color: var(--red);
+				}
+			}
+			.description {
+				margin-top: 16px;
+				font-size: 1rem;
+				line-height: 1.2;
+			}
+		}
+	}
+}

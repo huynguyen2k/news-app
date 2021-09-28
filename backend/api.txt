@@ -1,0 +1,398 @@
+- Note:
+  - Status code:
+    + 200: Neu xu ly thanh cong
+    + 400: Loi do client (sai username, password, ...)
+    + 500: Loi do server (Khong ket noi dc DB, ...)
+
+  - get params from url: req.query.paramName
+
+
+1. Quản lý người dùng
+  - Đăng ký
+    + method: POST
+    + url: '/api/users/signUp'
+    + params: none
+    + body: {
+      full_name: string,
+      username: string,
+      password: string,
+      avatar: file,
+      role_id: int
+    }
+    + response: {
+      statusCode: number,
+      message: string
+    }
+
+  - Đăng nhập
+    + method: POST
+    + url: '/api/users/signIn'
+    + params: none
+    + body: {
+      username: string,
+      password: string
+    }
+    + response: {
+      statusCode: number,
+      message: string,
+      content: object (user info)
+    }
+
+  - Cập nhật người dùng
+    + method: PUT
+    + url: '/api/users/updateUser'
+    + params: none
+    + body: {
+      user_id: number,
+      full_name: string,
+      avatar: file,
+      role_id: number
+    }
+    + response: {
+      statusCode: number,
+      message: string,
+    }
+
+  - Xóa người dùng
+    + method: DELETE
+    + url: '/api/users/deleteUser'
+    + params: {
+      userId: number
+    }
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+    }
+
+  - Lấy danh sách người dùng
+    + method: GET
+    + url: '/api/users/getUserList'
+    + params: none
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+      content: array (user info list)
+    }
+  
+  - Lấy danh sách loại người dùng
+    + method: GET
+    + url: '/api/users/getUserRoleList'
+    + params: none
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+      content: array (role info list)
+    }
+
+2. Quản lý chủ đề
+  - Thêm chủ đề
+    + method: POST
+    + url: '/api/topics/insertTopic'
+    + params: none
+    + body: {
+      topic_name: string,
+      description: string,
+      user_id: number,
+    }
+    + response: {
+      statusCode: number,
+      message: string
+    }
+
+  - Duyệt chủ đề
+    + method: PUT
+    + url: '/api/topics/approveTopic'
+    + params: none
+    + body: {
+      topic_id: number
+      approve_status: bool,
+      approve_pass: bool,
+      approve_desc: string,
+    }
+    + response: {
+      statusCode: number,
+      message: string
+    }
+  
+  - Cập nhật chủ đề
+    + method: PUT
+    + url: '/api/topics/updateTopic'
+    + params: none
+    + body: {
+      topic_id: number
+      topic_name: string,
+      description: string,
+    }
+    + response: {
+      statusCode: number,
+      message: string
+    }
+
+  - Xóa chủ đề
+    + method: DELETE
+    + url: '/api/topics/deleteTopic'
+    + params: {
+      topic_id: number
+    }
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string
+    }
+
+  - Lấy danh sách chủ đề theo tác giả đã tạo chủ đề
+    + method: GET
+    + url: '/api/topics/getTopicListByUserId'
+    + params: {
+      user_id: number
+    }
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+      content: array (topic list)
+    }
+
+  - Lấy danh sách chủ đề đã được admin chấp nhận
+    + method: GET
+    + url: '/api/topics/getAcceptedTopicList'
+    + params: none
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+      content: array (topic list)
+    }
+
+  - Lấy danh sách chủ đề chưa được duyệt
+    + method: GET
+    + url: '/api/topics/getUnapprovedTopicList'
+    + params: none
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+      content: array (topic list)
+    }
+
+3. Quản lý chủ đề con
+  - Thêm chủ đề con
+    + method: POST
+    + url: '/api/subtopics/insertSubtopic'
+    + params: none
+    + body: {
+      subtopic_name: string,
+      description: string,
+      topic_id: int,
+      user_id: int,
+    }
+    + response {
+      statusCode: number,
+      message: string
+    }
+
+  - Duyệt chủ đề con
+    + method: PUT
+    + url: '/api/subtopics/approveSubtopic'
+    + params: none
+    + body: {
+      subtopic_id: number
+      approve_status: bool,
+      approve_pass: bool,
+      approve_desc: string,
+    }
+    + response: {
+      statusCode: number,
+      message: string
+    }
+
+  - Cập nhật chủ đề con
+    + method: PUT
+    + url: '/api/subtopics/updateSubtopic'
+    + params: none
+    + body: {
+      subtopic_id: number,
+      subtopic_name: string,
+      description: string,
+      topic_id: number
+    }
+    + response: {
+      statusCode: number,
+      message: string,
+    }
+
+  - Xóa chủ đề con
+    + method: DELETE
+    + url: '/api/subtopics/deleteSubtopic'
+    + params: {
+      subtopic_id: number
+    }
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+    }
+
+  - Lấy danh sách chủ đề con theo tác giả đã tạo
+    + method: GET
+    + url: '/api/subtopics/getSubtopicListByUserId'
+    + params: {
+      user_id: number
+    }
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+      content: array (subtopic info list)
+    }
+
+  - Lấy danh sách chủ đề con đã được admin chấp nhận
+    + method: GET
+    + url: '/api/subtopics/getAcceptedSubtopicList'
+    + params: none
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+      content: array (subtopic list)
+    }
+
+  - Lấy danh sách loại chủ đề con chưa duyệt
+    + method: GET
+    + url: '/api/subtopics/getUnapprovedSubtopicList'
+    + params: none
+    + body: none
+    + response: {
+      statusCode: number,
+      message: string,
+      content: array (topic info list)
+    }
+
+4. Quản lý tin tức
+  - Thêm bản tin
+    + method: POST
+    + url: '/api/news/insertNews'
+    + params: none
+    + body: {
+      title: string,
+      description: string,
+      content: string,
+      image: file,
+      created_on: string,
+      user_id: number,
+      topic_id: number,
+      subtopics: array,
+    }
+    + response {
+      statusCode: number,
+      message: string
+    }
+
+  - Duyệt bản tin
+    + method: PUT
+    + url: '/api/news/approveNews'
+    + params: none
+    + body: {
+      new_id: number,
+      approve_status: bool,
+      approve_pass: bool,
+      approve_desc: string
+    }
+    + response {
+      statusCode: number,
+      message: string
+    }
+  
+  - Cập nhật bản tin
+    + method: PUT
+    + url: '/api/news/updateNews'
+    + params: none
+    + body: {
+      new_id: number,
+      title: string,
+      description: string,
+      content: string,
+      image: file,
+      topic_id: number,
+      subtopics: array,
+    }
+    + response {
+      statusCode: number,
+      message: string
+    }
+  
+  - Xóa bản tin
+    + method: DELETE
+    + url: '/api/news/deleteNews'
+    + params: {
+      new_id: number
+    }
+    + body: none
+    + response {
+      statusCode: number,
+      message: string
+    }
+
+  - Lấy danh sách bản tin theo id tác giả
+    + method: GET
+    + url: '/api/news/getNewsListByUserId'
+    + params: {
+      user_id: number
+    }
+    + body: none
+    + response {
+      statusCode: number,
+      message: string,
+      content: array
+    }
+
+  - Lấy chi tiết bản tin theo news_id
+    + method: GET
+    + url: '/api/news/getNewsDetailByNewsId'
+    + params: {
+      news_id: number
+    }
+    + body: none
+    + response {
+      statusCode: number,
+      message: string,
+      content: object
+    }
+
+  - Lấy danh sách bản tin mới nhất đã được duyệt
+    + method: GET
+    + url: '/api/news/getAcceptedLatestNews'
+    + params: none
+    + body: none
+    + response {
+      statusCode: number,
+      message: string,
+      content: array
+    }
+
+  - Lấy danh sách bản tin chưa được duyệt
+    + method: GET
+    + url: '/api/news/getUnapprovedNewsList'
+    + params: none
+    + body: none
+    + response {
+      statusCode: number,
+      message: string,
+      content: array
+    }
+    
+  - Lấy danh sách bản tin theo chủ đề
+    + method: GET
+    + url: '/api/news/getNewsListByTopicId'
+    + params: {
+      topic_id: number
+    }
+    + body: none
+    + response {
+      statusCode: number,
+      message: string,
+      content: array
+    }

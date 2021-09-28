@@ -1,0 +1,23 @@
+.label-badge {
+	display: inline-block;
+	outline: none;
+	border: none;
+	border-radius: 4px;
+	padding: 8px 12px;
+
+	font-size: 0.875rem;
+	font-weight: 500;
+
+	&--success {
+		color: white;
+		background-color: var(--light-success);
+	}
+	&--warning {
+		color: white;
+		background-color: var(--dark-warning);
+	}
+	&--danger {
+		color: white;
+		background-color: var(--light-danger);
+	}
+}

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+	--light-success: #66bb6a;
+	--success: #00ab55;
+	--dark-success: #03924b;
+
+	--info: dodgerblue;
+	--dark-warning: #ffb64d;
+	--warning: #ffc107;
+
+	--light-danger: #ff5252;
+	--danger: #dc3545;
+
+	--red: #f63a3a;
+	--light: #f8f9fa;
+	--dark-light: #c8c9ce;
+	--dark: #272c33;
+	--black: #212529;
+
+	--xs-text: 0.875rem;
+	--small-text: 1rem;
+	--medium-text: 1.5rem;
+	--large-text: 2rem;
+	--xl-text: 2.5rem;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #aaa;
+	border-radius: 8px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	line-height: 1;
+	font-family: 'Roboto', sans-serif;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}

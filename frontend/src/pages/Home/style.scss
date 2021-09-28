@@ -1,0 +1,32 @@
+.home-page {
+	&__section {
+		margin-top: 32px;
+
+		&:last-child {
+			margin-bottom: 32px;
+		}
+	}
+	&__section-header {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+
+		.title {
+			font-size: 1.5rem;
+			font-weight: 500;
+		}
+
+		.line {
+			margin-left: 32px;
+			margin-bottom: 2px;
+			border-radius: 4px;
+			height: 3px;
+
+			background-color: var(--red);
+			flex: 1 0 0;
+		}
+	}
+	&__section-body {
+		margin-top: 16px;
+	}
+}
