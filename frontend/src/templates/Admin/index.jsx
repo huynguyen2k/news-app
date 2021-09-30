@@ -21,9 +21,9 @@ import EmotionIcon from '@material-ui/icons/EmojiEmotionsRounded'
 // ACTIONS
 import { signOutUser } from 'app/slices/authSlice'
 // PAGES
-import ApproveTopicPage from 'pages/ApproveTopic'
-import ApproveSubtopicPage from 'pages/ApproveSubtopic'
-import ApproveNewsPage from 'pages/ApproveNews'
+const ApproveTopicPage = React.lazy(() => import('pages/ApproveTopic'))
+const ApproveSubtopicPage = React.lazy(() => import('pages/ApproveSubtopic'))
+const ApproveNewsPage = React.lazy(() => import('pages/ApproveNews'))
 
 const menu = [
 	{
@@ -96,28 +96,30 @@ function AdminTemplate() {
 				/>
 			</div>
 			<div className="admin__right-panel">
-				<Switch>
-					<Redirect
-						exact
-						from={`${match.path}`}
-						to={`${match.path}/approve-news`}
-					/>
-					<Route
-						exact
-						from={`${match.path}/approve-news`}
-						component={ApproveNewsPage}
-					/>
-					<Route
-						exact
-						path={`${match.path}/topics/approve-topics`}
-						component={ApproveTopicPage}
-					/>
-					<Route
-						exact
-						path={`${match.path}/topics/approve-subtopics`}
-						component={ApproveSubtopicPage}
-					/>
-				</Switch>
+				<React.Suspense fallback={<Loading loading={true} />}>
+					<Switch>
+						<Redirect
+							exact
+							from={`${match.path}`}
+							to={`${match.path}/approve-news`}
+						/>
+						<Route
+							exact
+							from={`${match.path}/approve-news`}
+							component={ApproveNewsPage}
+						/>
+						<Route
+							exact
+							path={`${match.path}/topics/approve-topics`}
+							component={ApproveTopicPage}
+						/>
+						<Route
+							exact
+							path={`${match.path}/topics/approve-subtopics`}
+							component={ApproveSubtopicPage}
+						/>
+					</Switch>
+				</React.Suspense>
 			</div>
 		</div>
 	)

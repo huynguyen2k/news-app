@@ -6,7 +6,7 @@ PrivateRoute.propTypes = {
 	isAuth: PropTypes.bool,
 	exact: PropTypes.bool,
 	path: PropTypes.string.isRequired,
-	component: PropTypes.func.isRequired,
+	component: PropTypes.object.isRequired,
 }
 
 PrivateRoute.defaultProps = {

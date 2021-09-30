@@ -2,8 +2,6 @@ import React from 'react'
 import './style.scss'
 // HOOKS
 import { useSelector, useDispatch } from 'react-redux'
-// PAGES
-import UserManagementPage from 'pages/UserManagement'
 // COMPONENTS
 import SideMenu from 'components/SideMenu'
 import Loading from 'components/Loading'
@@ -25,6 +23,8 @@ import TableIcon from '@material-ui/icons/AppsRounded'
 import EmotionIcon from '@material-ui/icons/EmojiEmotionsRounded'
 // ACTIONS
 import { signOutUser } from 'app/slices/authSlice'
+// PAGES
+const UserManagementPage = React.lazy(() => import('pages/UserManagement'))
 
 const menu = [
 	{
@@ -125,14 +125,16 @@ function SystemAdminTemplate() {
 				/>
 			</div>
 			<div className="system-admin__right-panel">
-				<Switch>
-					<Redirect exact from={`${match.path}`} to={`${match.path}/users`} />
-					<Route
-						exact
-						path={`${match.path}/users`}
-						component={UserManagementPage}
-					/>
-				</Switch>
+				<React.Suspense fallback={<Loading loading={true} />}>
+					<Switch>
+						<Redirect exact from={`${match.path}`} to={`${match.path}/users`} />
+						<Route
+							exact
+							path={`${match.path}/users`}
+							component={UserManagementPage}
+						/>
+					</Switch>
+				</React.Suspense>
 			</div>
 		</div>
 	)

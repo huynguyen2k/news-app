@@ -22,9 +22,9 @@ import EmotionIcon from '@material-ui/icons/EmojiEmotionsRounded'
 // ACTIONS
 import { signOutUser } from 'app/slices/authSlice'
 // PAGES
-import TopicManagementPage from 'pages/TopicManagement'
-import SubtopicManagement from 'pages/SubtopicManagement'
-import NewsManagement from 'pages/NewsManagement'
+const TopicManagementPage = React.lazy(() => import('pages/TopicManagement'))
+const SubtopicManagement = React.lazy(() => import('pages/SubtopicManagement'))
+const NewsManagement = React.lazy(() => import('pages/NewsManagement'))
 
 const menu = [
 	{
@@ -97,20 +97,26 @@ function AuthorTemplate() {
 				/>
 			</div>
 			<div className="author__right-panel">
-				<Switch>
-					<Redirect exact from={`${match.path}`} to={`${match.path}/news`} />
-					<Route exact path={`${match.path}/news`} component={NewsManagement} />
-					<Route
-						exact
-						path={`${match.path}/topics`}
-						component={TopicManagementPage}
-					/>
-					<Route
-						exact
-						path={`${match.path}/topics/subtopics`}
-						component={SubtopicManagement}
-					/>
-				</Switch>
+				<React.Suspense fallback={<Loading loading={true} />}>
+					<Switch>
+						<Redirect exact from={`${match.path}`} to={`${match.path}/news`} />
+						<Route
+							exact
+							path={`${match.path}/news`}
+							component={NewsManagement}
+						/>
+						<Route
+							exact
+							path={`${match.path}/topics`}
+							component={TopicManagementPage}
+						/>
+						<Route
+							exact
+							path={`${match.path}/topics/subtopics`}
+							component={SubtopicManagement}
+						/>
+					</Switch>
+				</React.Suspense>
 			</div>
 		</div>
 	)
