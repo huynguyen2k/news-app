@@ -16,6 +16,13 @@
 
 	&__date-time {
 		line-height: 1.4;
+
+		.date-time {
+			display: block;
+		}
+		.author {
+			display: block;
+		}
 	}
 
 	&__topic-list {
